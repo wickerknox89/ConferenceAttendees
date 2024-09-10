@@ -34,12 +34,12 @@ namespace ConferenceAttendees.MVC.Services.Base
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Attendee>> AttendeesAllAsync(System.Threading.CancellationToken cancellationToken);
 
-        /// <returns>Success</returns>
+        /// <returns>Created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<Attendee> AttendeesPOSTAsync(Attendee body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
+        /// <returns>Created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<Attendee> AttendeesPOSTAsync(Attendee body, System.Threading.CancellationToken cancellationToken);
 
@@ -317,7 +317,7 @@ namespace ConferenceAttendees.MVC.Services.Base
             }
         }
 
-        /// <returns>Success</returns>
+        /// <returns>Created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual System.Threading.Tasks.Task<Attendee> AttendeesPOSTAsync(Attendee body)
         {
@@ -325,7 +325,7 @@ namespace ConferenceAttendees.MVC.Services.Base
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
+        /// <returns>Created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<Attendee> AttendeesPOSTAsync(Attendee body, System.Threading.CancellationToken cancellationToken)
         {
@@ -370,7 +370,7 @@ namespace ConferenceAttendees.MVC.Services.Base
                         ProcessResponse(client_, response_);
 
                         var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
+                        if (status_ == 201)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Attendee>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
