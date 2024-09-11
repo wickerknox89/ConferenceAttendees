@@ -10,6 +10,8 @@ services:
       - "7106:7106"
     environment:
       - ASPNETCORE_URLS=http://*:7106
+    depends_on:
+      - mssql
   conferenceattendees.mvc:
     image: ${DOCKER_REGISTRY-}conferenceattendeesmvc
     build:
@@ -21,3 +23,13 @@ services:
       - ASPNETCORE_URLS=http://*:7230
     depends_on:
       - conferenceattendees.api
+  mssql:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: sql-DockerCompose
+    hostname: mssql
+    environment: 
+      - SA_PASSWORD=P@ssw0rd1
+      - ACCEPT_EULA=Y
+    restart: unless-stopped
+    ports:
+      - "1401:1433"
