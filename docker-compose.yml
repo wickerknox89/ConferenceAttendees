@@ -12,6 +12,8 @@ services:
       - ASPNETCORE_URLS=http://*:7106
     depends_on:
       - mssql
+    networks:
+      - app-network
   conferenceattendees.mvc:
     image: ${DOCKER_REGISTRY-}conferenceattendeesmvc
     build:
@@ -23,6 +25,8 @@ services:
       - ASPNETCORE_URLS=http://*:7230
     depends_on:
       - conferenceattendees.api
+    networks:
+      - app-network
   mssql:
     image: "mcr.microsoft.com/mssql/server"
     container_name: sql-DockerCompose
@@ -33,3 +37,20 @@ services:
     restart: unless-stopped
     ports:
       - "1401:1433"
+    networks:
+      - app-network
+  nginx:
+    build:
+      context: . 
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "8083:8083"
+    depends_on:
+      - conferenceattendees.mvc
+    networks:
+      - app-network
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
