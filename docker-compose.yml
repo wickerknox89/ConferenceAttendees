@@ -28,7 +28,7 @@ services:
     networks:
       - app-network
   mssql:
-    image: "mcr.microsoft.com/mssql/server"
+    image: "wickerknox89/conferenceattendeedb"
     container_name: sql-DockerCompose
     hostname: mssql
     environment: 
