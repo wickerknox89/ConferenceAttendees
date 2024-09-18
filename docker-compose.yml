@@ -8,12 +8,11 @@ services:
       dockerfile: ConferenceAttendees.API/Dockerfile
     ports:
       - "7106:7106"
-    environment:
-      - ASPNETCORE_URLS=http://*:7106
     depends_on:
       - mssql
     networks:
       - app-network
+
   conferenceattendees.mvc:
     image: ${DOCKER_REGISTRY-}conferenceattendeesmvc
     build:
@@ -21,12 +20,11 @@ services:
       dockerfile: ConferenceAttendees.MVC/Dockerfile
     ports:
       - "7230:7230"
-    environment:
-      - ASPNETCORE_URLS=http://*:7230
     depends_on:
       - conferenceattendees.api
     networks:
       - app-network
+
   mssql:
     image: "wickerknox89/conferenceattendeedb"
     container_name: sql-DockerCompose
@@ -39,6 +37,7 @@ services:
       - "1401:1433"
     networks:
       - app-network
+
   nginx:
     build:
       context: . 
