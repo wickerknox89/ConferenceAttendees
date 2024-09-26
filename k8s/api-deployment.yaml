@@ -18,7 +18,7 @@ spec:
         - containerPort: 80
         env:
         - name: ConnectionStrings__ConferenceAttendeeDatabaseConnection
-          value: Server=mssql-svc,1434;Database=ConferenceAttendeeDb;Trusted_Connection=false;MultipleActiveResultSets=true;Encrypt=false;user id=sa;password=P@ssword1;
+          value: Server=mssql-svc,1434;Database=ConferenceAttendeeDb;Trusted_Connection=false;MultipleActiveResultSets=true;Encrypt=false;user id=sa;password=P@ssw0rd1;
         - name: ASPNETCORE_URLS
           value: http://*:80
   selector:
