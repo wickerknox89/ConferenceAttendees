@@ -29,6 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{76D10AF6-87A
 		k8s\admin-user.yml = k8s\admin-user.yml
 		k8s\api-deployment.yaml = k8s\api-deployment.yaml
 		k8s\mssql-deployment.yaml = k8s\mssql-deployment.yaml
+		k8s\mvc-client-deployment.yaml = k8s\mvc-client-deployment.yaml
 		k8s\namespace.yml = k8s\namespace.yml
 	EndProjectSection
 EndProject

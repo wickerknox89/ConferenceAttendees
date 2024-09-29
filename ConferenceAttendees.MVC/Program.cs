@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped(sp => new HttpClient
 {
-    BaseAddress = new Uri("https://api.conferenceattendees.com:44391")
+    BaseAddress = new Uri(builder.Configuration["BaseApiUrl"])
 });
 
 builder.Services.AddScoped<IClient, Client>();
